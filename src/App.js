@@ -1,6 +1,10 @@
 import {useState} from "react";
 import './App.css';
 import Box from "./component/Box"
+import gawi from './images/gawi.png'
+import bawi from './images/bawi.png'
+import bo from './images/bo.png'
+
 
 // 1. 박스 2개 (타이틀, 사진, 결과)
 // 2. 가위 바위 보 버튼이 있다
@@ -12,15 +16,15 @@ import Box from "./component/Box"
 const choice = {
   rock:{
     name:"rock",
-    img:"https://media.istockphoto.com/id/946132558/ko/%EC%82%AC%EC%A7%84/%EB%B0%94%EC%9C%84%EC%82%B0-%EA%B3%A0%EB%A6%BD-%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD.jpg?s=612x612&w=0&k=20&c=tPXfCEWEidu1qf87-JeZdfZ04c-w6oImP6PW7AI_sqY="
+    img:bawi
   },
   scissors:{
     name:"scissors",
-    img:"https://artfeel.co.kr/web/product/big/202007/7caa3802b8bcb075532849f65be4522a.jpg"
+    img:gawi
   },
   paper:{
     name:"paper",
-    img:"https://images.unsplash.com/photo-1602629978879-e7ed887988d1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVDJUIwJUEyJUVDJTk2JUI0JUVDJUE3JTg0JTIwJUVDJUEyJTg1JUVDJTlEJUI0fGVufDB8fDB8fHww"
+    img:bo
   }
 }
 function App() {
@@ -80,7 +84,7 @@ const [result, setResult] = useState("");
         <Box title="You" item={userSelect} result={result}/>
         <Box title="Computer" item={computerSelect} result={result}/>
       </div>
-      <div className="main">
+      <div className="btnClass">
         <button onClick={()=>play("scissors")}>가위</button>
         <button onClick={()=>play("rock")}>바위</button>
         <button onClick={()=>play("paper")}>보</button>

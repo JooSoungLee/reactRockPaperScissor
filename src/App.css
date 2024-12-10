@@ -1,14 +1,30 @@
 .main{
   display: flex;
   justify-content: center;
+  width:300px;
+
 }
 
 .box{
   border:1px solid black;
-  width:500px;
+  width:100%;
+}
+
+.winBox{
+  border:1px solid blue;
+}
+
+.loseBox{
+  border:1px solid red;
 }
 
 .item-img{
-  width:400px;
-  height:400px;
+  width:50px;
+  height:50px;
+} 
+
+.btnClass{
+  display:flex;
+  justify-content:center;
+  width:300px;
 } 
