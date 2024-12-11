@@ -11,8 +11,7 @@ import bo from './images/bo.png'
 // 3. 버튼을 클릭하면 클릭한 값이 박스에 보임
 // 4. 컴퓨터는 랜덤하게 아이템 선택이 된다.
 // 5. 3 4 결과를 가지고 누가 이겼는지 승패를 따진다.
-// 6. 승패 결과에 따라 테두리 색이 바뀐다. (이기면 초록, 지면-빨강, 비기면-검은색)
-
+// 6. 승패 결과에 따라 테두리 색이 바뀐다. (이기면 초록, 지면-빨강, 비기면-기본)
 const choice = {
   rock:{
     name:"rock",
@@ -28,34 +27,21 @@ const choice = {
   }
 }
 function App() {
-const [userSelect, setUserSelect] = useState(null);
-const [computerSelect, setComputerSelect] = useState(null);
-const [result, setResult] = useState("");
-const [userScore, setUserScore] = useState(0);
-const [computerScore, setComputerScore] = useState(0);
+  const [userSelect, setUserSelect] = useState(null);
+  const [computerSelect, setComputerSelect] = useState(null);
+  const [result, setResult] = useState("");
+  const [userScore, setUserScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
 
 
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
-    
     setResult(judgement(choice[userChoice], computerChoice));
-
-    if(result === "WIN"){
-      setUserScore(prevScore => prevScore + 1);
-      //setUserScore(prevScore => prevScore + 1);
-      //setUserScore = setUserScore ++;
-    }else if (result === "LOSE"){
-      setComputerScore(prevScore => prevScore + 1);
-    }
-    
   }
 
   const judgement = (user, computerChoice) => {
-    console.log("user : " + user);
-    console.log("computerChoice : " + computerChoice);
-
     /** 
      * 결과 알고리즘 (유저 입장)
      * 
@@ -67,16 +53,23 @@ const [computerScore, setComputerScore] = useState(0);
      * user == paper, computer == rock       user승리
      * user == paper, computer == scissors   user패배
      * */ 
+    let judgementResult = "";
     if(user.name === computerChoice.name){
-      return "TIE"
+      judgementResult = "TIE"
     }else if(user.name==="rock"){
-      return computerChoice.name==="scissors"?"WIN":"LOSE"
+      judgementResult = computerChoice.name==="scissors"?"WIN":"LOSE"
     }else if(user.name==="scissors"){
-      return computerChoice.name==="paper"?"WIN":"LOSE"
+      judgementResult = computerChoice.name==="paper"?"WIN":"LOSE"
     }else if(user.name==="paper"){
-      return computerChoice.name==="rock"?"WIN":"LOSE"
+      judgementResult = computerChoice.name==="rock"?"WIN":"LOSE"
     }
     
+    if(judgementResult === "WIN"){
+      setUserScore(prevScore => prevScore + 1);
+    }else if (judgementResult === "LOSE"){
+      setComputerScore(prevScore => prevScore + 1);
+    } 
+    return judgementResult;
   }
 
   const randomChoice = () => {
@@ -90,15 +83,15 @@ const [computerScore, setComputerScore] = useState(0);
   }
 
   return (
-    <div>
+    <div className="app-container">
       <div className="main">
-        <Box title="You" item={userSelect} result={result} score={userScore}/>
-        <Box title="Computer" item={computerSelect} result={result} score={computerScore}/>
+        <Box title="You" item={userSelect} result={result} score={userScore} />
+        <Box title="Computer" item={computerSelect} result={result} score={computerScore} />
       </div>
       <div className="btnClass">
-        <button onClick={()=>play("scissors")}>가위</button>
-        <button onClick={()=>play("rock")}>바위</button>
-        <button onClick={()=>play("paper")}>보</button>
+        <button onClick={() => play("scissors")}>가위</button>
+        <button onClick={() => play("rock")}>바위</button>
+        <button onClick={() => play("paper")}>보</button>
       </div>
     </div>
   );

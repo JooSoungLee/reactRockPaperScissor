@@ -22,7 +22,7 @@ body {
   border: 2px solid #ccc; /* 기본 테두리 색상 */
   border-radius: 10px;
   padding: 20px;
-  width: 150px;
+  width: 120px; /* 고정된 너비 */
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -32,7 +32,6 @@ body {
   justify-content: center;
   text-align: center;
 }
-
 
 .box:hover {
   transform: translateY(-5px);
