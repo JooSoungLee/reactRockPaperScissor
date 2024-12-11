@@ -31,14 +31,25 @@ function App() {
 const [userSelect, setUserSelect] = useState(null);
 const [computerSelect, setComputerSelect] = useState(null);
 const [result, setResult] = useState("");
+const [userScore, setUserScore] = useState(0);
+const [computerScore, setComputerScore] = useState(0);
 
 
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
-
+    
     setResult(judgement(choice[userChoice], computerChoice));
+
+    if(result === "WIN"){
+      setUserScore(prevScore => prevScore + 1);
+      //setUserScore(prevScore => prevScore + 1);
+      //setUserScore = setUserScore ++;
+    }else if (result === "LOSE"){
+      setComputerScore(prevScore => prevScore + 1);
+    }
+    
   }
 
   const judgement = (user, computerChoice) => {
@@ -81,8 +92,8 @@ const [result, setResult] = useState("");
   return (
     <div>
       <div className="main">
-        <Box title="You" item={userSelect} result={result}/>
-        <Box title="Computer" item={computerSelect} result={result}/>
+        <Box title="You" item={userSelect} result={result} score={userScore}/>
+        <Box title="Computer" item={computerSelect} result={result} score={computerScore}/>
       </div>
       <div className="btnClass">
         <button onClick={()=>play("scissors")}>가위</button>
