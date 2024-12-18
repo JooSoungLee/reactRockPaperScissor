@@ -1,6 +1,12 @@
 # 샘플 페이지 URL
 https://joosounglee.github.io/rockpaperscissor/
 
+# 기능정리
+1. 가위 바위 보 버튼이 있다
+2. 버튼을 클릭하면 클릭한 값이 박스에 보임
+3. 컴퓨터는 랜덤하게 아이템 선택이 된다.
+4. 3 4 결과를 가지고 누가 이겼는지 승패를 따진다.
+5. 승패 결과에 따라 테두리 색이 바뀐다. (이기면 초록, 지면-빨강, 비기면-기본)
 
 # Getting Started with Create React App
 
