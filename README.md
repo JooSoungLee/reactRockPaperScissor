@@ -1,5 +1,5 @@
 # 샘플 페이지 URL (브라우저의 위치정보를 허용하여야 사용 가능합니다.)
-https://joosounglee.github.io/weatherApp/
+https://joosounglee.github.io/rockpaperscissor/
 
 
 # Getting Started with Create React App
